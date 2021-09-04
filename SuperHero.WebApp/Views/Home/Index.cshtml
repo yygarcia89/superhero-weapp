@@ -2,29 +2,38 @@
 
 @model SearchResultModel
 
-@using (Html.BeginForm("Search", "Home", FormMethod.Post))
-{
-    <div class="form-group">
-        <label for="Query">Look for a hero or villain</label>
-        <input type="text" class="form-control" id="Query" name="Query" placeholder="Enter a name">
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-}
+@*@using (Html.BeginForm("Search", "Home", FormMethod.Post))
+    {
+        <div class="form-group">
+            <label for="Query">Look for a hero or villain</label>
+            <input type="text" class="form-control" id="Query" name="Query" placeholder="Enter a name">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    }*@
 
-@if (Model?.Results != null && Model.Results.Any())
+@if (Model?.Response != null)
 {
-    <h1>Characters found</h1>
-    <div class="d-flex flex-wrap">
-        @foreach (var character in Model.Results)
-        {
-            <div class="card" style="width: 25%;">
-                <img class="card-img-top" src="@character.Image.Url" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">@character.Name</h5>
-                    <p class="card-text">@character.Biography.FullName</p>
-                    <a href="/character/@character.Id" class="btn btn-primary">Discover</a>
+    if (Model.Response.Equals("error", StringComparison.InvariantCultureIgnoreCase))
+    {
+        <h1 class="text-center text-uppercase py-5">@Model.Error</h1>
+    }
+    else
+    {
+        <h1>Characters found</h1>
+        <div class="d-flex flex-wrap">
+            @foreach (var character in Model.Results)
+            {
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                    <div class="card mb-4">
+                        <img class="card-img-top" src="@character.Image.Url" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">@character.Name</h5>
+                            <p class="card-text">@character.Biography.FullName</p>
+                            <a href="/character/@character.Id" class="btn btn-primary">Discover</a>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        }
-    </div>
-} 
+            }
+        </div>
+    }
+}

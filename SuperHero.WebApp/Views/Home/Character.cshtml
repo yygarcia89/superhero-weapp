@@ -2,4 +2,100 @@
 
 @model ProfileModel
 
-<pre>@Html.Raw(Json.Encode(Model))</pre>
+@*<pre>@Html.Raw(Json.Encode(Model))</pre>*@
+<div class="row d-flex">
+    <img src="@Model.Image.Url" class="img-fluid my-5" alt="@Model.Name Photo" style="height:200px">
+    <div class="mx-3 my-5">
+        <h1>@Model.Name</h1>
+        <h3>@Model.Biography.FullName</h3>
+        <p>@Model.Biography.Publisher</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-9">
+        <div class="row mb-5">
+            <h3>Power Stats</h3>
+            <div class="col-12">
+                @RenderProgressBar("Intelligence", Model.Powerstats.Intelligence)
+                @RenderProgressBar("Strength", Model.Powerstats.Strength)
+                @RenderProgressBar("Speed", Model.Powerstats.Speed)
+                @RenderProgressBar("Durability", Model.Powerstats.Durability)
+                @RenderProgressBar("Power", Model.Powerstats.Power)
+                @RenderProgressBar("Combat", Model.Powerstats.Combat)
+            </div>
+        </div>
+        <div class="row mb-3">
+            <h3>Biography</h3>
+            <table class="table table-sm">
+                <tr><td>Fullname</td><td>@Model.Biography.FullName</td></tr>
+                <tr><td>Alter-egos</td><td>@Model.Biography.AlterEgos</td></tr>
+                <tr>
+                    <td>Aliases</td>
+                    <td>
+                        <ul>
+                            @foreach (var el in Model.Biography.Aliases)
+                            {
+                                <li>@el</li>
+                            }
+                        </ul>
+                    </td>
+                <tr><td>Place of Birth</td><td>@Model.Biography.PlaceOfBirth</td></tr>
+                <tr><td>First Appearance</td><td>@Model.Biography.FirstAppearance</td></tr>
+                <tr><td>Publisher</td><td>@Model.Biography.Publisher</td></tr>
+                <tr><td>Alignment</td><td>@Model.Biography.Alignment</td></tr>                
+            </table>
+    </div>
+    <div class="row mb-3">
+        <h3>Work</h3>
+        <table class="table table-sm">
+            <tr><td>Occupation</td><td>@Model.Work.Occupation</td></tr>
+            <tr><td>Base</td><td>@Model.Work.Base</td></tr>
+        </table>
+    </div>
+    <div class="row mb-3">
+        <h3>Connections</h3>
+        <table class="table table-sm">
+            <tr><td>Group Affiliation</td><td>@Model.Connections.GroupAffiliation</td></tr>
+            <tr><td>Relatives</td><td>@Model.Connections.Relatives</td></tr>
+        </table>
+    </div>
+</div>
+<div class="col-2 offset-1">
+    <div class="row">
+        <h3>Appearance</h3>
+        <table class="table table-sm">
+            <tr><td>Gender</td><td>@Model.Appearance.Gender</td></tr>
+            <tr><td>Race</td><td>@Model.Appearance.Race</td></tr>
+            <tr><td>Height</td><td>@Model.Appearance.Height[0]</td></tr>
+            <tr><td>Weight</td><td>@Model.Appearance.Weight[0]</td></tr>
+            <tr><td>Eye-color</td><td>@Model.Appearance.EyeColor</td></tr>
+            <tr><td>Hair-color</td><td>@Model.Appearance.HairColor</td></tr>
+        </table>
+    </div>
+</div>
+</div>
+
+@helper RenderProgressBar(string label, string value)
+{
+    int statValue = 0;
+    bool isValid = int.TryParse(value, out statValue);
+    string barColor = statValue < 25 ? "bg-danger"
+        : statValue < 50 ? "bg-warning"
+        : statValue < 75 ? "bg-info"
+        : "bg-success";
+
+    <div class="row">
+        <div class="col-1">
+            <b>@label</b>
+        </div>
+        <div class="col-1 text-right">
+            <span>@value</span>
+        </div>
+        <div class="col-10">
+            <div class="progress">
+                <div class="progress-bar @barColor" role="progressbar" style="width: @($"{statValue}%")" aria-valuenow="@statValue" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+        </div>
+    </div>
+
+}

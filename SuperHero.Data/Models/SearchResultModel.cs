@@ -8,6 +8,9 @@ namespace SuperHero.Data.Models
         [JsonProperty("response")]
         public string Response { get; set; }
 
+        [JsonProperty("error")]
+        public string Error { get; set; }
+
         [JsonProperty("results-for")]
         public string ResultsFor { get; set; }
 
@@ -104,9 +107,9 @@ namespace SuperHero.Data.Models
 
     public partial class Powerstats
     {
-        [JsonProperty("stringelligence")]
+        [JsonProperty("intelligence")]
         //[JsonConverter(typeof(ParseStringConverter))]
-        public string stringelligence { get; set; }
+        public string Intelligence { get; set; }
 
         [JsonProperty("strength")]
         //[JsonConverter(typeof(ParseStringConverter))]
