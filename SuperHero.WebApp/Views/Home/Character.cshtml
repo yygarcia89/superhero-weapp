@@ -2,78 +2,134 @@
 
 @model ProfileModel
 
-@*<pre>@Html.Raw(Json.Encode(Model))</pre>*@
-<div class="row d-flex">
-    <img src="@Model.Image.Url" class="img-fluid my-5" alt="@Model.Name Photo" style="height:200px">
-    <div class="mx-3 my-5">
-        <h1>@Model.Name</h1>
-        <h3>@Model.Biography.FullName</h3>
-        <p>@Model.Biography.Publisher</p>
-    </div>
-</div>
-<div class="row">
-    <div class="col-9">
-        <div class="row mb-5">
-            <h3>Power Stats</h3>
-            <div class="col-12">
-                @RenderProgressBar("Intelligence", Model.Powerstats.Intelligence)
-                @RenderProgressBar("Strength", Model.Powerstats.Strength)
-                @RenderProgressBar("Speed", Model.Powerstats.Speed)
-                @RenderProgressBar("Durability", Model.Powerstats.Durability)
-                @RenderProgressBar("Power", Model.Powerstats.Power)
-                @RenderProgressBar("Combat", Model.Powerstats.Combat)
+@section Styles {
+    <link href="@Url.Content("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css")" rel="stylesheet" type="text/css" />
+}
+
+@section Scripts {
+    <script src="~/Scripts/main.js"></script>
+}
+
+<div class="my-5">
+    <div class="row">
+        <div class="col-12">
+            <div class="card w-100 mb-4">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12 col-lg-4">
+                            <img src="@Model.Image.Url" class="img-thumbnail js-profile-photo" alt="@Model.Name Photo">
+                        </div>
+                        <div class="col-12 col-lg-8 d-flex flex-column justify-content-around">
+                            <div>
+                                <h1>@Model.Name</h1>
+                                <h3>@Model.Biography.FullName</h3>
+                                <p>@Model.Biography.Publisher</p>
+                            </div>
+                            <div>
+                                <h3>Power Stats</h3>
+                                <div class="col-12">
+                                    @RenderProgressBar("Intelligence", Model.Powerstats.Intelligence)
+                                    @RenderProgressBar("Strength", Model.Powerstats.Strength)
+                                    @RenderProgressBar("Speed", Model.Powerstats.Speed)
+                                    @RenderProgressBar("Durability", Model.Powerstats.Durability)
+                                    @RenderProgressBar("Power", Model.Powerstats.Power)
+                                    @RenderProgressBar("Combat", Model.Powerstats.Combat)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="row mb-3">
-            <h3>Biography</h3>
-            <table class="table table-sm">
-                <tr><td>Fullname</td><td>@Model.Biography.FullName</td></tr>
-                <tr><td>Alter-egos</td><td>@Model.Biography.AlterEgos</td></tr>
-                <tr>
-                    <td>Aliases</td>
-                    <td>
-                        <ul>
-                            @foreach (var el in Model.Biography.Aliases)
-                            {
-                                <li>@el</li>
-                            }
-                        </ul>
-                    </td>
-                <tr><td>Place of Birth</td><td>@Model.Biography.PlaceOfBirth</td></tr>
-                <tr><td>First Appearance</td><td>@Model.Biography.FirstAppearance</td></tr>
-                <tr><td>Publisher</td><td>@Model.Biography.Publisher</td></tr>
-                <tr><td>Alignment</td><td>@Model.Biography.Alignment</td></tr>                
-            </table>
     </div>
-    <div class="row mb-3">
-        <h3>Work</h3>
-        <table class="table table-sm">
-            <tr><td>Occupation</td><td>@Model.Work.Occupation</td></tr>
-            <tr><td>Base</td><td>@Model.Work.Base</td></tr>
-        </table>
-    </div>
-    <div class="row mb-3">
-        <h3>Connections</h3>
-        <table class="table table-sm">
-            <tr><td>Group Affiliation</td><td>@Model.Connections.GroupAffiliation</td></tr>
-            <tr><td>Relatives</td><td>@Model.Connections.Relatives</td></tr>
-        </table>
-    </div>
-</div>
-<div class="col-2 offset-1">
     <div class="row">
-        <h3>Appearance</h3>
-        <table class="table table-sm">
-            <tr><td>Gender</td><td>@Model.Appearance.Gender</td></tr>
-            <tr><td>Race</td><td>@Model.Appearance.Race</td></tr>
-            <tr><td>Height</td><td>@Model.Appearance.Height[0]</td></tr>
-            <tr><td>Weight</td><td>@Model.Appearance.Weight[0]</td></tr>
-            <tr><td>Eye-color</td><td>@Model.Appearance.EyeColor</td></tr>
-            <tr><td>Hair-color</td><td>@Model.Appearance.HairColor</td></tr>
-        </table>
+        <div class="col-12 col-lg-8">
+            <div class="card w-100 mb-4">
+                <div class="card-body">
+                    <h3>Biography</h3>
+                    <div class="col-12">
+                        @RenderKeyValue("Fullname", @Model.Biography.FullName)
+                        @RenderKeyValue("Alter-egos", @Model.Biography.AlterEgos)
+                        @*@RenderKeyValue("Aliases", @Model.Biography.Aliases)*@
+                        @RenderKeyValue("Place Of Birth", @Model.Biography.PlaceOfBirth)
+                        @RenderKeyValue("First Appearance", @Model.Biography.FirstAppearance)
+                        @RenderKeyValue("Publisher", @Model.Biography.Publisher)
+                        @RenderKeyValue("Alignment", @Model.Biography.Alignment)
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-lg-4">
+            <div class="card w-100 mb-4">
+                <div class="card-body">
+                    <h3>Appearance</h3>
+                    <div class="col-12">
+                        @RenderKeyValue("Gender", @RenderGenreIcon(Model.Appearance.Gender).ToString())
+                        @RenderKeyValue("Race", @Model.Appearance.Race)
+                        @RenderKeyValue("Height", @Model.Appearance.Height[0])
+                        @RenderKeyValue("Weight", @Model.Appearance.Weight[0])
+                        @RenderKeyValue("Eye-color", @RenderEyeIcon(Model.Appearance.EyeColor).ToString())
+                        @RenderKeyValue("Hair-color", @Model.Appearance.HairColor)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+
+            <div class="card w-100 mb-4">
+                <div class="card-body">
+                    <h3>Work</h3>
+                    <div class="col-12">
+                        @RenderKeyValue("Occupation", @Model.Work.Occupation)
+                        @RenderKeyValue("Base", @Model.Work.Base)
+                    </div>
+                </div>
+            </div>
+            <div class="card w-100 mb-4">
+                <div class="card-body">
+                    <h3>Connections</h3>
+                    <div class="col-12">
+                        @RenderKeyValue("Group Affiliation", @Model.Connections.GroupAffiliation)
+                        @RenderKeyValue("Relatives", @Model.Connections.Relatives)
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-</div>
+
+
+@helper RenderKeyValue(string key, string value)
+{
+    <div class="row">
+        <div class="col-3 p-0"><b>@key</b></div>
+        <div class="col-9">@Html.Raw(value)</div>
+    </div>
+
+}
+
+@helper RenderEyeIcon(string color)
+{
+    <i class="fa fa-eye" aria-hidden="true" style="color:@color.ToLower()"></i>
+}
+
+@helper RenderGenreIcon(string gender)
+{
+    switch (gender.ToLower())
+    {
+        case "male":
+            <i class="fa fa-male" aria-hidden="true"></i>
+            break;
+        case "female":
+            <i class="fa fa-female" aria-hidden="true"></i>
+            break;
+        default:
+            <span>@gender</span>
+            break;
+    }
+}
 
 @helper RenderProgressBar(string label, string value)
 {
@@ -85,17 +141,15 @@
         : "bg-success";
 
     <div class="row">
-        <div class="col-1">
+        <div class="col-4 p-0">
             <b>@label</b>
         </div>
-        <div class="col-1 text-right">
-            <span>@value</span>
-        </div>
-        <div class="col-10">
+        <div class="col-8">
             <div class="progress">
-                <div class="progress-bar @barColor" role="progressbar" style="width: @($"{statValue}%")" aria-valuenow="@statValue" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar @barColor" role="progressbar" style="width: @($"{statValue}%")" aria-valuenow="@statValue" aria-valuemin="0" aria-valuemax="100">
+                    <span class="d-none d-sm-block">@statValue</span>
+                </div>
             </div>
         </div>
     </div>
-
 }

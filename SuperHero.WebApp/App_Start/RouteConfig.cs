@@ -14,6 +14,12 @@ namespace SuperHero.WebApp
                 url: "{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+               name: "Error",
+               url: "{controller}/{action}",
+               defaults: new { controller = "Error", action = "Index" }
+           );
         }
     }
 }

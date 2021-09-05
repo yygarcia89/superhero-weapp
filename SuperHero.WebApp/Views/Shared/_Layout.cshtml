@@ -3,78 +3,27 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>SuperHero App</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @RenderSection("Styles", false)
 </head>
 <body class="d-flex flex-column h-100">
     <header>
-        <!-- Fixed navbar -->
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
             <div class="container-fluid d-flex justify-content-between">
-                <a class="navbar-brand" href="#">Comic World</a>
-                @*<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>*@
-                @*<div class="collapse navbar-collapse" id="navbarCollapse">*@
-                    @*<ul class="navbar-nav me-auto mb-2 mb-md-0">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Link</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                            </li>
-                        </ul>*@
+                <a class="navbar-brand" href="/">Comic World</a>
                     @using (Html.BeginForm("Search", "Home", FormMethod.Post, new { @class = "d-flex" }))
                     {
-                        <input class="form-control mx-2" name="Query" type="search" placeholder="Search" aria-label="Search">
+                        string query = Request.QueryString["q"];
+                        <input class="form-control mx-2" name="Query" type="search" placeholder="Search" aria-label="Search" value="@query">
                         <button class="btn btn-outline-light" type="submit">Search</button>
-                        @*<div class="form-group">
-                                <label for="Query">Look for a hero or villain</label>
-                                <input type="text" class="form-control" id="Query" name="Query" placeholder="Enter a name">
-                            </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>*@
                     }
-
-                    @*<form class="d-flex">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form>*@
-                @*</div>*@
             </div>
         </nav>
     </header>
-    @*<div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li>@Html.ActionLink("About", "About", "Home")</li>
-                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    </ul>
-                </div>
-            </div>
-        </div>*@
-    <div class="container body-content">
-
-
-
+    <div class="container body-content my-5">
         @RenderBody()
-        @*<hr />
-            <footer>
-                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-            </footer>*@
     </div>
 
     @Scripts.Render("~/bundles/jquery")

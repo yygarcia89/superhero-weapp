@@ -2,6 +2,7 @@
 using SuperHero.Data.Services;
 using SuperHero.WebApp.Models;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Mvc;
 
 namespace SuperHero.WebApp.Controllers
@@ -22,9 +23,13 @@ namespace SuperHero.WebApp.Controllers
 
         [Route("/character/{id}")]
         public async Task<ActionResult> Character(int Id)
-        {
+        {            
             var model = await _client.GetProfile(Id);
-
+            if (model.Response.Equals("error", System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                throw new HttpException(404, "HTTP/1.1 404 Not Found");
+            }
+            
             return View(model);
         }
 
