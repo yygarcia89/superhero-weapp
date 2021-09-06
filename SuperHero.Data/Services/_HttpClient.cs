@@ -8,7 +8,12 @@ namespace SuperHero.Data.Services
 {
     public class _HttpClient
     {
-        public async Task<T> GetRequest<T>(string uri)
+        private string _baseUrl;
+        public _HttpClient(string baseUrl)
+        {
+            this._baseUrl = baseUrl;
+        }
+        public async Task<T> GetRequest<T>(string resource)
         {
             try
             {
@@ -17,7 +22,7 @@ namespace SuperHero.Data.Services
                     client.DefaultRequestHeaders.Accept.Add(
                     new MediaTypeWithQualityHeaderValue("application/json"));
 
-                    using (HttpResponseMessage response = await client.GetAsync(uri))
+                    using (HttpResponseMessage response = await client.GetAsync($"{_baseUrl}/{resource}"))
                     {
                         response.EnsureSuccessStatusCode();
                         string responseBody = await response.Content.ReadAsStringAsync();

@@ -1,4 +1,5 @@
-﻿using SuperHero.Data.Models;
+﻿using SuperHero.Common;
+using SuperHero.Data.Models;
 using SuperHero.Data.Services;
 using SuperHero.WebApp.Models;
 using System.Threading.Tasks;
@@ -25,7 +26,7 @@ namespace SuperHero.WebApp.Controllers
         public async Task<ActionResult> Character(int Id)
         {            
             var model = await _client.GetProfile(Id);
-            if (model.Response.Equals("error", System.StringComparison.InvariantCultureIgnoreCase))
+            if (model.Response.Equals(Constants.SUPER_HERO_API_ERROR_RESPONSE, System.StringComparison.InvariantCultureIgnoreCase))
             {
                 throw new HttpException(404, "HTTP/1.1 404 Not Found");
             }

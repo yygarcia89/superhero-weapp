@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5275294E-746F-45E6-B4E6-61DB00DFEA37}</ProjectGuid>
+    <ProjectGuid>{99416420-1A5E-4C74-8DBF-55DB0A71DE1A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SuperHero.Data</RootNamespace>
-    <AssemblyName>SuperHero.Data</AssemblyName>
+    <RootNamespace>SuperHero.Cache</RootNamespace>
+    <AssemblyName>SuperHero.Cache</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -33,9 +33,6 @@
   <ItemGroup>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.5.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Pipelines.Sockets.Unofficial, Version=1.0.0.0, Culture=neutral, PublicKeyToken=42ea0a778e13fbe2, processorArchitecture=MSIL">
       <HintPath>..\packages\Pipelines.Sockets.Unofficial.2.2.0\lib\net472\Pipelines.Sockets.Unofficial.dll</HintPath>
@@ -94,28 +91,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Appearance.cs" />
-    <Compile Include="Models\Biography.cs" />
-    <Compile Include="Models\Connections.cs" />
-    <Compile Include="Models\Image.cs" />
-    <Compile Include="Models\Powerstats.cs" />
-    <Compile Include="Models\ProfileModel.cs" />
-    <Compile Include="Models\ProfileResultModel.cs" />
-    <Compile Include="Models\SearchResultModel.cs" />
-    <Compile Include="Models\Work.cs" />
+    <Compile Include="CacheStrigsStack.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\SuperHeroClient.cs" />
-    <Compile Include="Services\_HttpClient.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SuperHero.Cache\SuperHero.Cache.csproj">
-      <Project>{99416420-1a5e-4c74-8dbf-55db0a71de1a}</Project>
-      <Name>SuperHero.Cache</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SuperHero.Common\SuperHero.Common.csproj">
       <Project>{9575e94e-f6bd-415c-b027-0c5d379f2178}</Project>
       <Name>SuperHero.Common</Name>

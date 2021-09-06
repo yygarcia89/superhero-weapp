@@ -1,4 +1,5 @@
 ﻿@using SuperHero.Data.Models;
+@using SuperHero.Common;
 
 @model SearchResultModel
 
@@ -8,7 +9,7 @@
 
 @if (Model?.Response != null)
 {
-    if (Model.Response.Equals("error", StringComparison.InvariantCultureIgnoreCase))
+    if (Model.Response.Equals(Constants.SUPER_HERO_API_ERROR_RESPONSE, StringComparison.InvariantCultureIgnoreCase))
     {
         <div class="my-5">
             <div class="row">

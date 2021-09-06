@@ -2,14 +2,10 @@
 
 namespace SuperHero.Data.Models
 {
-    public class ProfileModel
+    public partial class ProfileModel
     {
-        [JsonProperty("response")]
-        public string Response { get; set; }
-
         [JsonProperty("id")]
-        //[JsonConverter(typeof(ParseStringConverter))]
-        public long Id { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }

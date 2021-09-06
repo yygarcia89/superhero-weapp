@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperHero.WebApp", "SuperHe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperHero.Data", "SuperHero.Data\SuperHero.Data.csproj", "{5275294E-746F-45E6-B4E6-61DB00DFEA37}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperHero.Cache", "SuperHero.Cache\SuperHero.Cache.csproj", "{99416420-1A5E-4C74-8DBF-55DB0A71DE1A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperHero.Common", "SuperHero.Common\SuperHero.Common.csproj", "{9575E94E-F6BD-415C-B027-0C5D379F2178}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{5275294E-746F-45E6-B4E6-61DB00DFEA37}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5275294E-746F-45E6-B4E6-61DB00DFEA37}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5275294E-746F-45E6-B4E6-61DB00DFEA37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99416420-1A5E-4C74-8DBF-55DB0A71DE1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99416420-1A5E-4C74-8DBF-55DB0A71DE1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99416420-1A5E-4C74-8DBF-55DB0A71DE1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99416420-1A5E-4C74-8DBF-55DB0A71DE1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9575E94E-F6BD-415C-B027-0C5D379F2178}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9575E94E-F6BD-415C-B027-0C5D379F2178}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9575E94E-F6BD-415C-B027-0C5D379F2178}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9575E94E-F6BD-415C-B027-0C5D379F2178}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
