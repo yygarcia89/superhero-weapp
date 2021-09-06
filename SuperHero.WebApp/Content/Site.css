@@ -4,3 +4,17 @@ body {
     background-repeat: no-repeat;
     background-size: contain;
 }
+
+.card {
+    position: relative;
+}
+
+    .card .character-badge {
+        position: absolute;
+        height: 50px;
+        margin: 5px;
+        border: solid 1px #fff;
+        border-radius: 100%;
+        box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
+        right: 0;
+    }

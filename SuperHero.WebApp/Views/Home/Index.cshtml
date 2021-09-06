@@ -41,9 +41,11 @@
                     <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                         <div class="card w-100 mb-4">
                             <img class="card-img-top js-profile-photo" src="@character.Image.Url" style="height:350px">
+                            <img class="character-badge" src="~/Content/Images/character-@(character.Biography.Alignment).png"/>
                             <div class="card-body">
                                 <h5 class="card-title">@character.Name</h5>
                                 <p class="card-text text-truncate">@(string.IsNullOrEmpty(character.Biography.FullName) ? "Unknown" : character.Biography.FullName)</p>
+                                <p class="badge badge-warning card-text text-truncate">@character.Biography.Publisher</p>
                                 <a href="/character/@character.Id?q=@Request.QueryString["q"]" class="btn btn-sm btn-success w-100">Explore</a>
                             </div>
                         </div>

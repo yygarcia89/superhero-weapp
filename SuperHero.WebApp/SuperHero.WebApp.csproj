@@ -190,7 +190,12 @@
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\Images\404-hero.jpg" />
     <Content Include="Content\Images\background.png" />
+    <Content Include="Content\Images\character-bad.png" />
+    <Content Include="Content\Images\character-good.png" />
+    <Content Include="Content\Images\character-neutral.png" />
+    <Content Include="Content\Images\logo.png" />
     <Content Include="Content\Images\profile-image-404.png" />
+    <Content Include="Content\Images\sys-err.png" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />

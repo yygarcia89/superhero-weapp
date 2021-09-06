@@ -14,9 +14,10 @@
     <div class="row">
         <div class="col-12">
             <div class="card w-100 mb-4">
+                <img class="character-badge" src="~/Content/Images/character-@(Model.Biography.Alignment).png"/>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-12 col-lg-4">
+                        <div class="col-12 col-lg-4 text-center">
                             <img src="@Model.Image.Url" class="img-thumbnail js-profile-photo" alt="@Model.Name Photo">
                         </div>
                         <div class="col-12 col-lg-8 d-flex flex-column justify-content-around">
@@ -50,11 +51,10 @@
                     <div class="col-12">
                         @RenderKeyValue("Fullname", @Model.Biography.FullName)
                         @RenderKeyValue("Alter-egos", @Model.Biography.AlterEgos)
-                        @*@RenderKeyValue("Aliases", @Model.Biography.Aliases)*@
+                        @RenderKeyValue("Aliases", @String.Join(", ", Model.Biography.Aliases))
                         @RenderKeyValue("Place Of Birth", @Model.Biography.PlaceOfBirth)
                         @RenderKeyValue("First Appearance", @Model.Biography.FirstAppearance)
                         @RenderKeyValue("Publisher", @Model.Biography.Publisher)
-                        @RenderKeyValue("Alignment", @Model.Biography.Alignment)
                     </div>
                 </div>
             </div>
@@ -100,12 +100,11 @@
     </div>
 </div>
 
-
 @helper RenderKeyValue(string key, string value)
 {
     <div class="row">
-        <div class="col-3 p-0"><b>@key</b></div>
-        <div class="col-9">@Html.Raw(value)</div>
+        <div class="col-4 col-sm-3 p-0"><b>@key</b></div>
+        <div class="col-8 col-sm-9">@Html.Raw(value)</div>
     </div>
 
 }
