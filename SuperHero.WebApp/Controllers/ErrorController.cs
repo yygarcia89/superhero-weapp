@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace SuperHero.WebApp.Controllers
 {
@@ -11,17 +7,11 @@ namespace SuperHero.WebApp.Controllers
 
         public ActionResult Index()
         {
-            //Response.StatusCode = 404;
-
             return View();
         }
         public ActionResult NotFound()
         {
-            //Response.StatusCode = 404;
-
             return View();
         }
-
-
     }
 }

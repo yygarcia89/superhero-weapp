@@ -4,8 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SuperHero App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" 
+          integrity="sha512-P5MgMn1jBN01asBgU0z60Qk4QxiXo86+wlFahKrsQf37c9cro517WzVSPPV1tDKzhku2iJ2FVgL67wG03SGnNA==" 
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
     @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
     @RenderSection("Styles", false)
 </head>
 <body class="d-flex flex-column vh-100">
@@ -26,8 +28,9 @@
         @RenderBody()
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" 
+            integrity="sha512-bnIvzh6FU75ZKxp0GXLH9bewza/OIw6dLVh9ICg0gogclmYGguQJWl8U30WpbsGTqbIiAwxTsbe76DErLq5EDQ==" 
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>
