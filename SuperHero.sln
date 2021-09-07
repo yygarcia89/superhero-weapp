@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperHero.Cache", "SuperHer
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperHero.Common", "SuperHero.Common\SuperHero.Common.csproj", "{9575E94E-F6BD-415C-B027-0C5D379F2178}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperHero.Test", "SuperHero.Test\SuperHero.Test.csproj", "{1B9F210F-BDDD-4ED5-8602-60E42F811A27}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{9575E94E-F6BD-415C-B027-0C5D379F2178}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9575E94E-F6BD-415C-B027-0C5D379F2178}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9575E94E-F6BD-415C-B027-0C5D379F2178}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B9F210F-BDDD-4ED5-8602-60E42F811A27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B9F210F-BDDD-4ED5-8602-60E42F811A27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B9F210F-BDDD-4ED5-8602-60E42F811A27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B9F210F-BDDD-4ED5-8602-60E42F811A27}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

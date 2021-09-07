@@ -11,11 +11,11 @@ namespace SuperHero.Common.Helpers
     public static class String
     {
         /// <summary>
-        /// Compresses the string.
+        /// Compresses the string to byte array.
         /// </summary>
         /// <param name="text">The text.</param>
         /// <returns></returns>
-        public static string CompressString(this string text)
+        public static byte[] CompressStringToBytes(this string text)
         {
             byte[] buffer = Encoding.UTF8.GetBytes(text);
             var memoryStream = new MemoryStream();
@@ -32,6 +32,17 @@ namespace SuperHero.Common.Helpers
             var gZipBuffer = new byte[compressedData.Length + 4];
             Buffer.BlockCopy(compressedData, 0, gZipBuffer, 4, compressedData.Length);
             Buffer.BlockCopy(BitConverter.GetBytes(buffer.Length), 0, gZipBuffer, 0, 4);
+            return gZipBuffer;
+        }
+
+        /// <summary>
+        /// Compresses the string.
+        /// </summary>
+        /// <param name="text">The text.</param>
+        /// <returns></returns>
+        public static string CompressString(this string text)
+        {
+            byte[] gZipBuffer = text.CompressStringToBytes();
             return Convert.ToBase64String(gZipBuffer);
         }
 

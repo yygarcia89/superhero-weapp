@@ -7,19 +7,24 @@ namespace SuperHero.Cache
 {
     public class CacheStrigsStack
     {
-        ConnectionMultiplexer redis = ConnectionMultiplexer.Connect(ConfigurationManager.AppSettings["RedisEndpoint"]);
         IDatabase db;
-
-        TimeSpan EXPIRATION_TIMEOUT = new TimeSpan(23, 59, 59);
 
         public CacheStrigsStack()
         {
+            ConnectionMultiplexer redis = ConnectionMultiplexer.Connect(ConfigurationManager.AppSettings["RedisEndpoint"]);
             this.db = redis.GetDatabase();
+        }
+
+        public CacheStrigsStack(string redisEndpoint)
+        {
+            ConnectionMultiplexer _redis = ConnectionMultiplexer.Connect(redisEndpoint);
+            this.db = _redis.GetDatabase();
         }
 
         public bool IsKeyExists(string key) => this.db.KeyExists(key);
 
-        public void SetStrings(string key, string value) => this.db.StringSet(key, value.CompressString(), expiry: EXPIRATION_TIMEOUT);
+        public void SetStrings(string key, string value, int minutesTimeout = 1440) =>
+            this.db.StringSet(key, value.CompressString(), expiry: new TimeSpan(0, minutesTimeout, 0));
 
         public string GetStrings(string key) => this.db.StringGet(key).ToString().DecompressString();
     }
