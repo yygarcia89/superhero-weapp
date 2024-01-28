@@ -112,10 +112,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SuperHero.Cache\SuperHero.Cache.csproj">
-      <Project>{99416420-1a5e-4c74-8dbf-55db0a71de1a}</Project>
-      <Name>SuperHero.Cache</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SuperHero.Common\SuperHero.Common.csproj">
       <Project>{9575e94e-f6bd-415c-b027-0c5d379f2178}</Project>
       <Name>SuperHero.Common</Name>
